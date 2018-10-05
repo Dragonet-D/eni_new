@@ -1,0 +1,63 @@
+.page_start_wrapper {
+  @extend %page_start_wrapper;
+  .empty {
+    flex: 580;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .voice_btns {
+      width: 100%;
+      height: percent(105, 580);
+      display: flex;
+      justify-content: flex-end;
+      .voice {
+        cursor: pointer;
+        height: percent(90, 105);
+        width: percent(80);
+        margin-right: percent(20);
+        margin-top: percent(15);
+        border-radius: 50%;
+      }
+      .close {
+        @extend .voice;
+      }
+    }
+    .choose_btns{
+      height: percent(450, 580);
+      display: flex;
+      .choose_btn{
+        width: percent(420);
+        height: percent(430, 450);
+        border-radius: percent(26, 420);
+        box-sizing: border-box;
+        overflow: hidden;
+        cursor: pointer;
+        transition: .3s;
+      }
+      .btn_left{
+        margin-left: percent(140);
+      }
+      .btn_right{
+        margin-left: percent(160);
+      }
+      .choose_img{
+        transform: scale(1.1);
+        border: 8px solid red;
+        border-radius: percent(26, 420);
+      }
+    }
+  }
+  .btn_wrapper {
+    flex: 140;
+    display: flex;
+    justify-content: center;
+    .start_btn {
+      height: percent(130, 140);
+      width: percent(120);
+      display: flex;
+    }
+    .start_btn_active{
+      background-color: transparent;
+    }
+  }
+}

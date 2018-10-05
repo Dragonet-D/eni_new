@@ -1,0 +1,73 @@
+.page_start_wrapper {
+  @extend %page_start_wrapper;
+  .empty {
+    flex: 415;
+    .voice_btns {
+      width: 100%;
+      height: percent(105, 405);
+      display: flex;
+      justify-content: flex-end;
+      .voice {
+        cursor: pointer;
+        height: percent(90, 105);
+        width: percent(80);
+        margin-right: percent(20);
+        margin-top: percent(15);
+        border-radius: 50%;
+      }
+      .close {
+        @extend .voice;
+      }
+    }
+  }
+  .btn_wrapper {
+    flex: 305;
+    .btns_content {
+      height: percent(190, 190);
+      display: flex;
+      align-items: center;
+      .choose_btns {
+        width: percent(1138);
+        height: 100%;
+        position: relative;
+        .choose_btn {
+          width: percent(170, 1140);
+          height: percent(190, 305);
+          position: absolute;
+          border-radius: percent(22, 170);
+          overflow: hidden;
+          cursor: pointer;
+          top: percent(50, 305);
+          transition: all .2s;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .choose_btn_active {
+          transform: scale(1.3);
+          border: 6px solid red;
+          -webkit-transform: scale(1.3);
+        }
+        .choose_a {
+          left: percent(325, 1140);
+          background-size: cover;
+        }
+        .choose_b {
+          left: percent(555, 1140);
+          background-size: cover;
+        }
+        .choose_c {
+          left: percent(785, 1140);
+          background-size: cover;
+        }
+      }
+      .start_btn {
+        width: percent(124);
+        height: percent(130, 190);
+        border-radius: 50%;
+      }
+    }
+
+  }
+}
