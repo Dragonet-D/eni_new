@@ -106,7 +106,7 @@
   import {goToNext} from 'common/js/mixins'
   import {historystore, calcPage} from 'common/js/utils'
   import $ from 'jquery'
-  let timer = null
+  // let timer = null
   export default {
     mixins: [goToNext],
     data() {
@@ -162,16 +162,16 @@
           success(data) {
             // console.log(data)
             if (data.Success === true) {
-              timer = setTimeout(() => {
-                const h = This.$createElement
-                This.$notify.error({
-                  title: 'Error Message',
-                  message: h('i', {style: 'color: teal'}, 'Your session has expired due to 15 minutes of inactivity, please login again')
-                })
-                setTimeout(() => {
-                  window.location.reload()
-                }, 3000)
-              }, 1000 * 60 * 15)
+              // timer = setTimeout(() => {
+              //   const h = This.$createElement
+              //   This.$notify.error({
+              //     title: 'Error Message',
+              //     message: h('i', {style: 'color: teal'}, 'Your session has expired due to 15 minutes of inactivity, please login again')
+              //   })
+              //   setTimeout(() => {
+              //     window.location.reload()
+              //   }, 3000)
+              // }, 1000 * 60 * 15)
               setInterval(() => {
                 $.ajax({
                   /* eslint-disable no-undef */
@@ -189,9 +189,9 @@
                         message: h('i', {style: 'color: teal'}, data.Message)
                       })
                       setTimeout(() => {
-                        if (timer) {
-                          clearTimeout(timer)
-                        }
+                        // if (timer) {
+                        //   clearTimeout(timer)
+                        // }
                         window.location.reload()
                       }, 3000)
                     }
