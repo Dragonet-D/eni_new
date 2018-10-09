@@ -76,6 +76,8 @@
 <script type="text/ecmascript-6">
   import page78 from 'components/page78/page78'
   import {goToNext, patterns} from 'common/js/mixins'
+  import $ from 'jquery'
+  import {historystore} from 'common/js/utils'
 
   let list = [
     {
@@ -133,6 +135,15 @@
           // window.location.hash = 78
           this.checkOnOff = false
           this.pageStatus = false
+          $.ajax({
+            /* eslint-disable no-undef */
+            url: answerCompleted,
+            dataType: 'json',
+            type: 'POST',
+            data: {
+              'PassCode': historystore.fetch('eni-user-info').password
+            }
+          })
         }
       },
       cancleAnswer() {

@@ -35,8 +35,6 @@
 <script type="text/ecmascript-6">
   import page79 from 'components/page79/page79'
   import {goToNext} from 'common/js/mixins'
-  import $ from 'jquery'
-  import {historystore} from 'common/js/utils'
 
   export default {
     mixins: [goToNext],
@@ -50,15 +48,6 @@
         this.audioLoad()
         this.goNext(79)
         this.audioPlay()
-        $.ajax({
-          /* eslint-disable no-undef */
-          url: answerCompleted,
-          dataType: 'json',
-          type: 'POST',
-          data: {
-            'PassCode': historystore.fetch('eni-user-info').password
-          }
-        })
       }
     },
     components: {
