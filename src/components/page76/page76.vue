@@ -68,7 +68,7 @@
       </div>
       <page77 v-if="checkStatus === 1"></page77>
       <page78 v-if="checkStatus === 2"></page78>
-      <audio ref="audio" src="./static/MonkeyBusiness/77.mp3"></audio>
+      <audio ref="audio" src="./static/MonkeyBusiness/77a.mp3"></audio>
       <audio ref="audio78" src="./static/MonkeyBusiness/79.mp3"></audio>
     </div>
   </transition>

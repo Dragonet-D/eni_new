@@ -76,7 +76,7 @@
         </div>
       </div>
       <page75 v-if="!pageStatus"></page75>
-      <audio ref="audio" src="./static/MonkeyBusiness/77.mp3"></audio>
+      <audio ref="audio" src="./static/MonkeyBusiness/77a.mp3"></audio>
     </div>
   </transition>
 </template>

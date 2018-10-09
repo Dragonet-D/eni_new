@@ -69,6 +69,7 @@
       <page74 v-if="checkStatus === 1"></page74>
       <page75 v-if="checkStatus === 2"></page75>
       <audio ref="audio" src="./static/MonkeyBusiness/77.mp3"></audio>
+      <audio ref="audioo" src="./static/MonkeyBusiness/77a.mp3"></audio>
     </div>
   </transition>
 </template>
@@ -122,6 +123,12 @@
     methods: {
       checkAnswer(stage, poinsts) {
         if (this.checkOnOff && this.list2.length) {
+          if (this.$refs.audioo) {
+            this.$refs.audioo.load()
+          }
+          if (this.$refs.audio) {
+            this.$refs.audio.load()
+          }
           if (this.goToNextStatus === 1) {
             this.uploadResult(stage, poinsts, 'page73', true, '1')
           } else {
@@ -129,14 +136,12 @@
           }
           if ((this.filterData(this.uploadData.scope, 'page72') && this.filterData(this.uploadData.scope, 'page73')) || (!this.filterData(this.uploadData.scope, 'page72') && !this.filterData(this.uploadData.scope, 'page73'))) {
             this.checkStatus = 2
+            this.$refs.audioo.play()
             // window.location.hash = 75
           } else {
             this.checkStatus = 1
-            // window.location.hash = 74
-          }
-          if (this.$refs.audio) {
-            this.$refs.audio.load()
             this.$refs.audio.play()
+            // window.location.hash = 74
           }
           this.checkOnOff = false
           this.pageStatus = false
