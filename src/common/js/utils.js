@@ -14,18 +14,51 @@ export const historystore = {
 
 function stageOne(question) {
   let result
-  if (question === 1) {
-    result = 11
-  } else if (question === 3 || question === 4 || question === 5) {
-    result = 15
-  } else if (question === 6 || question === 7 || question === 8) {
-    result = 18
-  } else if (question === 9 || question === 10 || question === 11) {
-    result = 21
-  } else if (question === 12 || question === 13 || question === 14) {
-    result = 24
-  } else {
-    result = 27
+  switch (question) {
+    case 2:
+      result = 13
+      break
+    case 3:
+      result = 14
+      break
+    case 4:
+      result = 15
+      break
+    case 5:
+      result = 15
+      break
+    case 6:
+      result = 15
+      break
+    case 7:
+      result = 15
+      break
+    case 8:
+      result = 15
+      break
+    case 9:
+      result = 15
+      break
+    case 10:
+      result = 15
+      break
+    case 11:
+      result = 15
+      break
+    case 12:
+      result = 15
+      break
+    case 13:
+      result = 15
+      break
+    case 14:
+      result = 15
+      break
+    case 15:
+      result = 15
+      break
+    default:
+      break
   }
   return result
 }
