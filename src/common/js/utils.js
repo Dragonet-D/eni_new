@@ -14,7 +14,7 @@ export const historystore = {
 
 function stageOne(question) {
   let result
-  if (question === 1 || question === 2) {
+  if (question === 1) {
     result = 11
   } else if (question === 3 || question === 4 || question === 5) {
     result = 15
