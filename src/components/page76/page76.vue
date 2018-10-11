@@ -79,8 +79,6 @@
   import page77 from 'components/page77/page77'
   import page78 from 'components/page78/page78'
   import {goToNext, patterns} from 'common/js/mixins'
-  import $ from 'jquery'
-  import {historystore} from 'common/js/utils'
 
   let list = [
     {
@@ -136,15 +134,6 @@
               this.checkStatus = 2
               this.$refs.audio78.load()
               this.$refs.audio78.play()
-              $.ajax({
-                /* eslint-disable no-undef */
-                url: answerCompleted,
-                dataType: 'json',
-                type: 'POST',
-                data: {
-                  'PassCode': historystore.fetch('eni-user-info').password
-                }
-              })
             } else {
               this.checkStatus = 1
               this.$refs.audio.load()
@@ -155,15 +144,6 @@
               this.checkStatus = 2
               this.$refs.audio78.load()
               this.$refs.audio78.play()
-              $.ajax({
-                /* eslint-disable no-undef */
-                url: answerCompleted,
-                dataType: 'json',
-                type: 'POST',
-                data: {
-                  'PassCode': historystore.fetch('eni-user-info').password
-                }
-              })
             } else {
               this.checkStatus = 1
               this.$refs.audio.load()

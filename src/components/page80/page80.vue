@@ -248,7 +248,8 @@
   import draggable from 'vuedraggable'
   import goodjob from 'components/goodjob/goodjob'
   import wronganswer from 'components/wronganswer/wronganswer'
-  import page1 from 'components/page1/page1'
+  import $ from 'jquery'
+  import {historystore} from 'common/js/utils'
 
   let list = [
     {
@@ -525,7 +526,15 @@
       },
       goNextpage() {
         this.$refs.audio6.pause()
-        // this.goNext(1)
+        $.ajax({
+          /* eslint-disable no-undef */
+          url: answerCompleted,
+          dataType: 'json',
+          type: 'POST',
+          data: {
+            'PassCode': historystore.fetch('eni-user-info').password
+          }
+        })
         window.location.reload()
       },
       onMove({relatedContext, draggedContext}) {
@@ -562,8 +571,7 @@
     components: {
       draggable,
       goodjob,
-      wronganswer,
-      page1
+      wronganswer
     }
   }
 </script>
