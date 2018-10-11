@@ -169,7 +169,7 @@
               this.$refs.audio.load()
               this.$refs.audio.play()
             }
-          } 
+          }
           this.checkOnOff = false
           this.pageStatus = false
         }

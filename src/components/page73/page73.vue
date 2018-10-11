@@ -151,7 +151,7 @@
               this.checkStatus = 1
               this.$refs.audio.play()
             }
-          } 
+          }
           this.checkOnOff = false
           this.pageStatus = false
         }
