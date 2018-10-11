@@ -101,7 +101,7 @@
               this.checkStatus = 2
               this.$refs.audio.play()
             }
-          } 
+          }
           this.pageStatus = false
         }
       },

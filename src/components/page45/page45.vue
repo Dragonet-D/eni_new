@@ -112,7 +112,7 @@
           } else {
             this.uploadResults(3, 2, false, 'page45')
           }
-          if (this.forNextPageData  && this.forNextPageData.num !== 45) {
+          if (this.forNextPageData && this.forNextPageData.num !== 45) {
             if ((this.filterData(this.uploadData.scope, 'page44') && this.filterData(this.uploadData.scope, 'page45')) || (!this.filterData(this.uploadData.scope, 'page44') && !this.filterData(this.uploadData.scope, 'page45'))) {
               this.checkStatus = 2
             } else {
@@ -124,7 +124,7 @@
             } else {
               this.checkStatus = 1
             }
-          }          
+          }
           setTimeout(() => {
             this.$refs.audio.load()
             this.$refs.audio.play()

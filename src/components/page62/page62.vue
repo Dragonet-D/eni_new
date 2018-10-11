@@ -98,7 +98,7 @@
             } else {
               this.checkStatus = 2
             }
-          } 
+          }
           this.pageStatus = false
         }
       },
