@@ -130,7 +130,6 @@
             this.$refs.audio.load()
             this.$refs.audio.play()
           }
-          // window.location.hash = 78
           this.checkOnOff = false
           this.pageStatus = false
         }
