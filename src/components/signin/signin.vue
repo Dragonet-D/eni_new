@@ -45,30 +45,66 @@
       </div>
     </div>
     <page1 v-if="!pageStatus"></page1>
+
+    <page5 v-if="pageNumber === 11"></page5>
     <page11 v-if="pageNumber === 11"></page11>
+    <page13 v-if="pageNumber === 13"></page13>
+    <page14 v-if="pageNumber === 14"></page14>
+
     <page15 v-if="pageNumber === 15"></page15>
+    <page16 v-if="pageNumber === 16"></page16>
+    <page17 v-if="pageNumber === 17"></page17>
+
     <page18 v-if="pageNumber === 18"></page18>
+    <page19 v-if="pageNumber === 19"></page19>
+    <page20 v-if="pageNumber === 20"></page20>
+
     <page21 v-if="pageNumber === 21"></page21>
+    <page22 v-if="pageNumber === 22"></page22>
+    <page23 v-if="pageNumber === 23"></page23>
+
     <page24 v-if="pageNumber === 24"></page24>
+    <page25 v-if="pageNumber === 25"></page25>
+    <page26 v-if="pageNumber === 26"></page26>
 
     <page27 v-if="pageNumber === 27"></page27>
     <page33 v-if="pageNumber === 33"></page33>
+    <page34 v-if="pageNumber === 34"></page34>
+    <page35 v-if="pageNumber === 35"></page35>
+
     <page36 v-if="pageNumber === 36"></page36>
+    <page37 v-if="pageNumber === 37"></page37>
+    <page38 v-if="pageNumber === 38"></page38>
 
     <page39 v-if="pageNumber === 39"></page39>
     <page44 v-if="pageNumber === 44"></page44>
+    <page45 v-if="pageNumber === 45"></page45>
+    <page46 v-if="pageNumber === 46"></page46>
+
     <page47 v-if="pageNumber === 47"></page47>
+    <page48 v-if="pageNumber === 48"></page48>
+    <page49 v-if="pageNumber === 49"></page49>
 
     <page50 v-if="pageNumber === 50"></page50>
     <page55 v-if="pageNumber === 55"></page55>
 
     <page56 v-if="pageNumber === 56"></page56>
     <page61 v-if="pageNumber === 61"></page61>
+    <page62 v-if="pageNumber === 62"></page62>
+    <page63 v-if="pageNumber === 63"></page63>
+
     <page64 v-if="pageNumber === 64"></page64>
+    <page65 v-if="pageNumber === 65"></page65>
+    <page66 v-if="pageNumber === 66"></page66>
 
     <page67 v-if="pageNumber === 67"></page67>
     <page72 v-if="pageNumber === 72"></page72>
+    <page73 v-if="pageNumber === 73"></page73>
+    <page74 v-if="pageNumber === 74"></page74>
+
     <page75 v-if="pageNumber === 75"></page75>
+    <page76 v-if="pageNumber === 75"></page76>
+    <page77 v-if="pageNumber === 76"></page77>
 
     <audio id="audio_page2" ref="audio" src="./static/MonkeyBusiness/1.mp3"></audio>
   </div>
@@ -77,40 +113,65 @@
 <script type="text/ecmascript-6">
   import page1 from 'components/page1/page1'
 
+  import page5 from 'components/page5/page5'
   import page11 from 'components/page11/page11'
   import page13 from 'components/page13/page13'
   import page14 from 'components/page14/page14'
+
   import page15 from 'components/page15/page15'
   import page16 from 'components/page16/page16'
   import page17 from 'components/page17/page17'
+
   import page18 from 'components/page18/page18'
   import page19 from 'components/page19/page19'
   import page20 from 'components/page20/page20'
+
   import page21 from 'components/page21/page21'
   import page22 from 'components/page22/page22'
   import page23 from 'components/page23/page23'
+
   import page24 from 'components/page24/page24'
   import page25 from 'components/page25/page25'
   import page26 from 'components/page26/page26'
 
   import page27 from 'components/page27/page27'
   import page33 from 'components/page33/page33'
+  import page34 from 'components/page34/page34'
+  import page35 from 'components/page35/page35'
+
   import page36 from 'components/page36/page36'
+  import page37 from 'components/page37/page37'
+  import page38 from 'components/page38/page38'
 
   import page39 from 'components/page39/page39'
   import page44 from 'components/page44/page44'
+  import page45 from 'components/page45/page45'
+  import page46 from 'components/page46/page46'
+
   import page47 from 'components/page47/page47'
+  import page48 from 'components/page48/page48'
+  import page49 from 'components/page49/page49'
 
   import page50 from 'components/page50/page50'
   import page55 from 'components/page55/page55'
 
   import page56 from 'components/page56/page56'
   import page61 from 'components/page61/page61'
+  import page62 from 'components/page62/page62'
+  import page63 from 'components/page63/page63'
+
   import page64 from 'components/page64/page64'
+  import page65 from 'components/page65/page65'
+  import page66 from 'components/page66/page66'
 
   import page67 from 'components/page67/page67'
   import page72 from 'components/page72/page72'
+  import page73 from 'components/page73/page73'
+  import page74 from 'components/page74/page74'
+
   import page75 from 'components/page75/page75'
+  import page76 from 'components/page76/page76'
+  import page77 from 'components/page77/page77'
 
   import Vue from 'vue'
   import {goToNext} from 'common/js/mixins'

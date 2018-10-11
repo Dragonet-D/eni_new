@@ -15,6 +15,10 @@ export const historystore = {
 function stageOne(question) {
   let result
   switch (question) {
+    case 0:
+      return 5
+    case 1:
+      return 11
     case 2:
       result = 13
       break
@@ -25,37 +29,37 @@ function stageOne(question) {
       result = 15
       break
     case 5:
-      result = 15
+      result = 16
       break
     case 6:
-      result = 15
+      result = 17
       break
     case 7:
-      result = 15
+      result = 18
       break
     case 8:
-      result = 15
+      result = 19
       break
     case 9:
-      result = 15
+      result = 20
       break
     case 10:
-      result = 15
+      result = 21
       break
     case 11:
-      result = 15
+      result = 22
       break
     case 12:
-      result = 15
+      result = 23
       break
     case 13:
-      result = 15
+      result = 24
       break
     case 14:
-      result = 15
+      result = 25
       break
     case 15:
-      result = 15
+      result = 26
       break
     default:
       break
@@ -64,60 +68,115 @@ function stageOne(question) {
 }
 function stageTwo(question) {
   let result
-  if (question === 1 || question === 2) {
-    result = 33
-  } else if (question === 3 || question === 4 || question === 5) {
-    result = 36
-  } else {
-    result = 39
+  switch (question) {
+    case 0:
+      return 27
+    case 1:
+      return 33
+    case 2:
+      return 34
+    case 3:
+      return 35
+    case 4:
+      return 36
+    case 5:
+      return 37
+    case 6:
+      return 38
+    default:
+      break
   }
   return result
 }
 function stageThree(question) {
   let result
-  if (question === 1 || question === 2) {
-    result = 44
-  } else if (question === 3 || question === 4 || question === 5) {
-    result = 47
-  } else {
-    result = 50
+  switch (question) {
+    case 0:
+      return 39
+    case 1:
+      return 44
+    case 2:
+      return 45
+    case 3:
+      return 46
+    case 4:
+      return 47
+    case 5:
+      return 48
+    case 6:
+      return 49
+    default:
+      break
   }
   return result
 }
 function stageFour(question) {
   let result
-  if (question === 4) {
-    result = 56
-  } else {
-    result = 55
+  switch (question) {
+    case 0:
+      return 50
+    case 1:
+      return 55
+    case 2:
+      return 55
+    case 3:
+      return 55
+    case 4:
+      return 55
+    default:
+      break
   }
   return result
 }
 function stageFive(question) {
   let result
-  if (question === 1 || question === 2) {
-    result = 61
-  } else if (question === 3 || question === 4 || question === 5) {
-    result = 64
-  } else {
-    result = 67
+  switch (question) {
+    case 0:
+      return 56
+    case 1:
+      return 61
+    case 2:
+      return 62
+    case 3:
+      return 63
+    case 4:
+      return 64
+    case 5:
+      return 65
+    case 6:
+      return 66
+    default:
+      break
   }
   return result
 }
 function stageSix(question) {
   let result
-  if (question === 1 || question === 2) {
-    result = 72
-  } else if (question === 3 || question === 4 || question === 5) {
-    result = 75
-  } else {
-    result = 75
+  switch (question) {
+    case 0:
+      return 67
+    case 1:
+      return 72
+    case 2:
+      return 73
+    case 3:
+      return 74
+    case 4:
+      return 75
+    case 5:
+      return 76
+    case 6:
+      return 77
+    default:
+      break
   }
   return result
 }
 // 计算跳转页面
 export const calcPage = (stage, question) => {
   switch (stage) {
+    case 0:
+      return 5
     case 1:
       return stageOne(question)
     case 2:
@@ -130,6 +189,8 @@ export const calcPage = (stage, question) => {
       return stageFive(question)
     case 6:
       return stageSix(question)
+    case 7:
+      return 78
     default:
       return true
   }
