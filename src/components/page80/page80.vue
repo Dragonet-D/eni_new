@@ -386,6 +386,15 @@
       checkAnswer() {
         if (this.onOff) {
           if (this.list1[0].id === '9' && this.list2[0].id === '2' && this.list3[0].id === '4' && this.list4[0].id === '7' && this.list5[0].id === '6' && this.list6[0].id === '1' && this.list7[0].id === '5' && this.list8[0].id === '3' && this.list9[0].id === '8') {
+            $.ajax({
+              /* eslint-disable no-undef */
+              url: answerCompleted,
+              dataType: 'json',
+              type: 'POST',
+              data: {
+                'PassCode': historystore.fetch('eni-user-info').password
+              }
+            })
             this.showStatus = 1
             this.$refs.audio6.play()
             clearInterval(this.timer)
@@ -526,15 +535,6 @@
       },
       goNextpage() {
         this.$refs.audio6.pause()
-        $.ajax({
-          /* eslint-disable no-undef */
-          url: answerCompleted,
-          dataType: 'json',
-          type: 'POST',
-          data: {
-            'PassCode': historystore.fetch('eni-user-info').password
-          }
-        })
         window.location.reload()
       },
       onMove({relatedContext, draggedContext}) {
