@@ -25,6 +25,7 @@
                     :class="[item.className, index === btnActiveIndex ? 'choose_btn_active':'']"
                     :style="item.remind ? item.remind : ''"
                     :data-id="item.id"
+                    :key="index"
                     @click="numClick(index, item.id)"
                   >
                     <img :src="item.src" alt="">
@@ -111,13 +112,19 @@
           } else {
             this.uploadResults(3, 2, false, 'page45')
           }
-          if ((this.filterData(this.uploadData.scope, 'page44') && this.filterData(this.uploadData.scope, 'page45')) || (!this.filterData(this.uploadData.scope, 'page44') && !this.filterData(this.uploadData.scope, 'page45'))) {
-            this.checkStatus = 2
-            // window.location.hash = 47
+          if (this.forNextPageData  && this.forNextPageData.num !== 45) {
+            if ((this.filterData(this.uploadData.scope, 'page44') && this.filterData(this.uploadData.scope, 'page45')) || (!this.filterData(this.uploadData.scope, 'page44') && !this.filterData(this.uploadData.scope, 'page45'))) {
+              this.checkStatus = 2
+            } else {
+              this.checkStatus = 1
+            }
           } else {
-            this.checkStatus = 1
-            // window.location.hash = 46
-          }
+            if ((this.forNextPageData.forNextPageStatus && this.filterData(this.uploadData.scope, 'page45')) || (!this.forNextPageData.forNextPageStatus && !this.filterData(this.uploadData.scope, 'page45'))) {
+              this.checkStatus = 2
+            } else {
+              this.checkStatus = 1
+            }
+          }          
           setTimeout(() => {
             this.$refs.audio.load()
             this.$refs.audio.play()

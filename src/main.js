@@ -11,6 +11,7 @@ import ElementUI from 'element-ui'
 Vue.config.productionTip = false
 Vue.use(draggable)
 Vue.use(ElementUI)
+Vue.prototype.forNextPageData = {}
 // Vue.use(sortable)
 fastclick.attach(document.body)
 /* eslint-disable no-new */

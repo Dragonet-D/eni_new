@@ -59,12 +59,22 @@
         if (this.canGo) {
           this.uploadResult(this.stage, this.poinsts, this.status, this.page, this.answer, this.rawResponse)
           this.prevOnePause(34)
-          if ((this.filterData(this.uploadData.scope, 'page33') && this.filterData(this.uploadData.scope, 'page34')) || (!this.filterData(this.uploadData.scope, 'page33') && !this.filterData(this.uploadData.scope, 'page34'))) {
-            this.checkStatus = 1
-            this.goNext(36)
+          if (this.forNextPageData && this.forNextPageData.num !== 34) {
+            if ((this.filterData(this.uploadData.scope, 'page33') && this.filterData(this.uploadData.scope, 'page34')) || (!this.filterData(this.uploadData.scope, 'page33') && !this.filterData(this.uploadData.scope, 'page34'))) {
+              this.checkStatus = 1
+              this.goNext(36)
+            } else {
+              this.checkStatus = 2
+              this.goNext(35)
+            }
           } else {
-            this.checkStatus = 2
-            this.goNext(35)
+            if ((this.forNextPageData.forNextPageStatus && this.filterData(this.uploadData.scope, 'page34')) || (!this.forNextPageData.forNextPageStatus && !this.filterData(this.uploadData.scope, 'page34'))) {
+              this.checkStatus = 1
+              this.goNext(36)
+            } else {
+              this.checkStatus = 2
+              this.goNext(35)
+            }
           }
           this.audioPlay()
         }

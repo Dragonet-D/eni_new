@@ -24,6 +24,7 @@
                     v-for="(item, index) in countNums"
                     :class="[item.className, index === btnActiveIndex ? 'choose_btn_active':'']"
                     :style="item.remind ? item.remind : ''"
+                    :key="index"
                     @click="numClick(index, item.id)"
                     :data-id="item.id"
                   >
@@ -114,20 +115,34 @@
           } else {
             this.uploadResults(3, 5, false, 'page48')
           }
-          if ((this.filterData(this.uploadData.scope, 'page47') && this.filterData(this.uploadData.scope, 'page48')) || (!this.filterData(this.uploadData.scope, 'page47') && !this.filterData(this.uploadData.scope, 'page48'))) {
-            this.checkStatus = 2
-            // window.location.hash = 50
-            setTimeout(() => {
-              this.audioPlay('audio50')
-              this.pageStatus = false
-            }, 1000)
+          if (this.forNextPageData && this.forNextPageData.num !== 48) {
+            if ((this.filterData(this.uploadData.scope, 'page47') && this.filterData(this.uploadData.scope, 'page48')) || (!this.filterData(this.uploadData.scope, 'page47') && !this.filterData(this.uploadData.scope, 'page48'))) {
+              this.checkStatus = 2
+              setTimeout(() => {
+                this.audioPlay('audio50')
+                this.pageStatus = false
+              }, 1000)
+            } else {
+              this.checkStatus = 1
+              setTimeout(() => {
+                this.audioPlay()
+                this.pageStatus = false
+              }, 1000)
+            }
           } else {
-            this.checkStatus = 1
-            // window.location.hash = 49
-            setTimeout(() => {
-              this.audioPlay()
-              this.pageStatus = false
-            }, 1000)
+            if ((this.forNextPageData.forNextPageStatus && this.filterData(this.uploadData.scope, 'page48')) || (!this.forNextPageData.forNextPageStatus && !this.filterData(this.uploadData.scope, 'page48'))) {
+              this.checkStatus = 2
+              setTimeout(() => {
+                this.audioPlay('audio50')
+                this.pageStatus = false
+              }, 1000)
+            } else {
+              this.checkStatus = 1
+              setTimeout(() => {
+                this.audioPlay()
+                this.pageStatus = false
+              }, 1000)
+            }
           }
         }
       },

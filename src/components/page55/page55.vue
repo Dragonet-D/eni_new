@@ -33,6 +33,7 @@
                       class="drag_target_content"
                       v-for="(item, index) in list1"
                       :data-id="item.id"
+                      :key="index"
                       @click="listClick(list1, 'list1', 'editable1')"
                     >
                       <img :src="item.src" alt="">
@@ -49,6 +50,7 @@
                       class="drag_target_content"
                       v-for="(item, index) in list2"
                       :data-id="item.id"
+                      :key="index"
                       @click="listClick(list2, 'list2', 'editable2')"
                     >
                       <img :src="item.src" alt="">
@@ -65,6 +67,7 @@
                       class="drag_target_content"
                       v-for="(item, index) in list3"
                       :data-id="item.id"
+                      :key="index"
                       @click="listClick(list3, 'list3', 'editable3')"
                     >
                       <img :src="item.src" alt="">
@@ -81,6 +84,7 @@
                       class="drag_target_content"
                       v-for="(item, index) in list4"
                       :data-id="item.id"
+                      :key="index"
                       @click="listClick(list4, 'list4', 'editable4')"
                     >
                       <img :src="item.src" alt="">
@@ -99,6 +103,7 @@
                     class="drag_targets"
                     v-for="(item, index) in list"
                     :data-id="item.id"
+                    :key="index"
                     :class="item.className"
                   >
                     <img :src="item.src" alt="">

@@ -22,8 +22,9 @@
                 >
                   <div
                     class="choose_btn"
-                    v-for="item in list2"
+                    v-for="(item, index) in list2"
                     :class="item.className"
+                    :key="index"
                   >
                     <img :src="item.src" alt="">
                   </div>
@@ -117,12 +118,22 @@
         if (this.list2.length) {
           this.prevOnePause(16)
           this.upLoadAnswer(stage, poinsts, 'page16', '1')
-          if ((this.filterData(this.uploadData.scope, 'page15') && this.filterData(this.uploadData.scope, 'page16')) || (!this.filterData(this.uploadData.scope, 'page15') && !this.filterData(this.uploadData.scope, 'page16'))) {
-            this.checkStatus = 2
-            this.goNext(18)
+          if (this.forNextPageData && this.forNextPageData.num !== 16) {
+            if ((this.filterData(this.uploadData.scope, 'page15') && this.filterData(this.uploadData.scope, 'page16')) || (!this.filterData(this.uploadData.scope, 'page15') && !this.filterData(this.uploadData.scope, 'page16'))) {
+              this.checkStatus = 2
+              this.goNext(18)
+            } else {
+              this.checkStatus = 1
+              this.goNext(17)
+            }
           } else {
-            this.checkStatus = 1
-            this.goNext(17)
+            if ((this.forNextPageData.forNextPageStatus && this.filterData(this.uploadData.scope, 'page16')) || (!this.forNextPageData.forNextPageStatus && !this.filterData(this.uploadData.scope, 'page16'))) {
+              this.checkStatus = 2
+              this.goNext(18)
+            } else {
+              this.checkStatus = 1
+              this.goNext(17)
+            }
           }
           this.audioPlay()
         }
@@ -139,7 +150,7 @@
       page17,
       page18
     }
-  }
+}
 </script>
 
 <style lang="scss" scoped rel="stylesheet/scss">

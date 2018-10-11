@@ -24,6 +24,7 @@
                     class="choose_btn"
                     v-for="item in list2"
                     :class="item.className"
+                    :key="item.className"
                   >
                     <img :src="item.src" alt="">
                   </div>
@@ -134,15 +135,23 @@
           } else {
             this.uploadResult(stage, poinsts, 'page73', false, '1')
           }
-          if ((this.filterData(this.uploadData.scope, 'page72') && this.filterData(this.uploadData.scope, 'page73')) || (!this.filterData(this.uploadData.scope, 'page72') && !this.filterData(this.uploadData.scope, 'page73'))) {
-            this.checkStatus = 2
-            this.$refs.audioo.play()
-            // window.location.hash = 75
+          if (this.forNextPageData && this.forNextPageData.num !== 73) {
+            if ((this.filterData(this.uploadData.scope, 'page72') && this.filterData(this.uploadData.scope, 'page73')) || (!this.filterData(this.uploadData.scope, 'page72') && !this.filterData(this.uploadData.scope, 'page73'))) {
+              this.checkStatus = 2
+              this.$refs.audioo.play()
+            } else {
+              this.checkStatus = 1
+              this.$refs.audio.play()
+            }
           } else {
-            this.checkStatus = 1
-            this.$refs.audio.play()
-            // window.location.hash = 74
-          }
+            if ((this.forNextPageData.forNextPageStatus && this.filterData(this.uploadData.scope, 'page73')) || (!this.forNextPageData.forNextPageStatus && !this.filterData(this.uploadData.scope, 'page73'))) {
+              this.checkStatus = 2
+              this.$refs.audioo.play()
+            } else {
+              this.checkStatus = 1
+              this.$refs.audio.play()
+            }
+          } 
           this.checkOnOff = false
           this.pageStatus = false
         }

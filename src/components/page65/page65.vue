@@ -85,15 +85,23 @@
           this.$refs.audio.load()
           this.$refs.audio70.load()
           this.uploadResult(this.stage, this.poinsts, this.status, this.page, this.answer, this.rawResponse)
-          if ((this.filterData(this.uploadData.scope, 'page64') && this.filterData(this.uploadData.scope, 'page65')) || (!this.filterData(this.uploadData.scope, 'page64') && !this.filterData(this.uploadData.scope, 'page65'))) {
-            this.checkStatus = 1
-            // window.location.hash = 67
-            this.$refs.audio70.play()
+          if (this.forNextPageData && this.forNextPageData.num !== 65) {
+            if ((this.filterData(this.uploadData.scope, 'page64') && this.filterData(this.uploadData.scope, 'page65')) || (!this.filterData(this.uploadData.scope, 'page64') && !this.filterData(this.uploadData.scope, 'page65'))) {
+              this.checkStatus = 1
+              this.$refs.audio70.play()
+            } else {
+              this.checkStatus = 2
+              this.$refs.audio.play()
+            }
           } else {
-            this.checkStatus = 2
-            // window.location.hash = 66
-            this.$refs.audio.play()
-          }
+            if ((this.forNextPageData.forNextPageStatus && this.filterData(this.uploadData.scope, 'page65')) || (!this.forNextPageData.forNextPageStatus && !this.filterData(this.uploadData.scope, 'page65'))) {
+              this.checkStatus = 1
+              this.$refs.audio70.play()
+            } else {
+              this.checkStatus = 2
+              this.$refs.audio.play()
+            }
+          } 
           this.pageStatus = false
         }
       },

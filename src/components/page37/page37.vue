@@ -62,14 +62,26 @@
           this.prevOnePause(37)
           this.audioLoad('audio')
           this.audioLoad('audio0')
-          if ((this.filterData(this.uploadData.scope, 'page36') && this.filterData(this.uploadData.scope, 'page37')) || (!this.filterData(this.uploadData.scope, 'page36') && !this.filterData(this.uploadData.scope, 'page37'))) {
-            this.checkStatus = 1
-            this.goNext(39)
-            this.audioPlay('audio0')
+          if (this.forNextPageData && this.forNextPageData.num !== 37) {
+            if ((this.filterData(this.uploadData.scope, 'page36') && this.filterData(this.uploadData.scope, 'page37')) || (!this.filterData(this.uploadData.scope, 'page36') && !this.filterData(this.uploadData.scope, 'page37'))) {
+              this.checkStatus = 1
+              this.goNext(39)
+              this.audioPlay('audio0')
+            } else {
+              this.checkStatus = 2
+              this.goNext(38)
+              this.audioPlay()
+            }
           } else {
-            this.checkStatus = 2
-            this.goNext(38)
-            this.audioPlay()
+            if ((this.forNextPageData.forNextPageStatus && this.filterData(this.uploadData.scope, 'page37')) || (!this.forNextPageData.forNextPageStatus && !this.filterData(this.uploadData.scope, 'page37'))) {
+              this.checkStatus = 1
+              this.goNext(39)
+              this.audioPlay('audio0')
+            } else {
+              this.checkStatus = 2
+              this.goNext(38)
+              this.audioPlay()
+            }
           }
         }
       }

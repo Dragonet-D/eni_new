@@ -24,6 +24,7 @@
                     class="choose_btn"
                     v-for="item in list2"
                     :class="item.className"
+                    :key="item.className"
                   >
                     <img :src="item.src" alt="">
                   </div>
@@ -130,26 +131,45 @@
           } else {
             this.uploadResult(stage, poinsts, 'page76', false, '4')
           }
-          if ((this.filterData(this.uploadData.scope, 'page75') && this.filterData(this.uploadData.scope, 'page76')) || (!this.filterData(this.uploadData.scope, 'page75') && !this.filterData(this.uploadData.scope, 'page76'))) {
-            this.checkStatus = 2
-            // window.location.hash = 78
-            this.$refs.audio78.load()
-            this.$refs.audio78.play()
-            $.ajax({
-              /* eslint-disable no-undef */
-              url: answerCompleted,
-              dataType: 'json',
-              type: 'POST',
-              data: {
-                'PassCode': historystore.fetch('eni-user-info').password
-              }
-            })
+          if (this.forNextPageData && this.forNextPageData.num !== 76) {
+            if ((this.filterData(this.uploadData.scope, 'page75') && this.filterData(this.uploadData.scope, 'page76')) || (!this.filterData(this.uploadData.scope, 'page75') && !this.filterData(this.uploadData.scope, 'page76'))) {
+              this.checkStatus = 2
+              this.$refs.audio78.load()
+              this.$refs.audio78.play()
+              $.ajax({
+                /* eslint-disable no-undef */
+                url: answerCompleted,
+                dataType: 'json',
+                type: 'POST',
+                data: {
+                  'PassCode': historystore.fetch('eni-user-info').password
+                }
+              })
+            } else {
+              this.checkStatus = 1
+              this.$refs.audio.load()
+              this.$refs.audio.play()
+            }
           } else {
-            this.checkStatus = 1
-            // window.location.hash = 77
-            this.$refs.audio.load()
-            this.$refs.audio.play()
-          }
+            if ((this.forNextPageData.forNextPageStatus && this.filterData(this.uploadData.scope, 'page76')) || (!this.forNextPageData.forNextPageStatus && !this.filterData(this.uploadData.scope, 'page76'))) {
+              this.checkStatus = 2
+              this.$refs.audio78.load()
+              this.$refs.audio78.play()
+              $.ajax({
+                /* eslint-disable no-undef */
+                url: answerCompleted,
+                dataType: 'json',
+                type: 'POST',
+                data: {
+                  'PassCode': historystore.fetch('eni-user-info').password
+                }
+              })
+            } else {
+              this.checkStatus = 1
+              this.$refs.audio.load()
+              this.$refs.audio.play()
+            }
+          } 
           this.checkOnOff = false
           this.pageStatus = false
         }

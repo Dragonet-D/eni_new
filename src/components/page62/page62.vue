@@ -86,13 +86,19 @@
             this.$refs.audio.load()
             this.$refs.audio.play()
           }
-          if ((this.filterData(this.uploadData.scope, 'page61') && this.filterData(this.uploadData.scope, 'page62')) || (!this.filterData(this.uploadData.scope, 'page61') && !this.filterData(this.uploadData.scope, 'page62'))) {
-            this.checkStatus = 1
-            // window.location.hash = 64
+          if (this.forNextPageData && this.forNextPageData.num !== 62) {
+            if ((this.filterData(this.uploadData.scope, 'page61') && this.filterData(this.uploadData.scope, 'page62')) || (!this.filterData(this.uploadData.scope, 'page61') && !this.filterData(this.uploadData.scope, 'page62'))) {
+              this.checkStatus = 1
+            } else {
+              this.checkStatus = 2
+            }
           } else {
-            this.checkStatus = 2
-            // window.location.hash = 63
-          }
+            if ((this.forNextPageData.forNextPageStatus && this.filterData(this.uploadData.scope, 'page62')) || (!this.forNextPageData.forNextPageStatus && !this.filterData(this.uploadData.scope, 'page62'))) {
+              this.checkStatus = 1
+            } else {
+              this.checkStatus = 2
+            }
+          } 
           this.pageStatus = false
         }
       },

@@ -296,7 +296,7 @@
                   }
                 })
               }
-              if (data.QuestionId && data.StageId) {
+              if (data.QuestionId !== undefined && data.StageId === undefined) {
                 const h = This.$createElement
                 This.$notify({
                   title: 'Remind Message',
@@ -304,6 +304,17 @@
                 })
                 This.pageNumber = calcPage(data.StageId, data.QuestionId)
                 This.siginPage = false
+                if (data.Score === 1) {
+                  Vue.prototype.forNextPageData = {
+                    forNextPageStatus: true,
+                    num: calcPage(data.StageId, data.QuestionId)
+                  }
+                } else {
+                  Vue.prototype.forNextPageData = {
+                    forNextPageStatus: false,
+                    num: calcPage(data.StageId, data.QuestionId)
+                  }
+                }
               } else {
                 This.audioLoad()
                 setTimeout(() => {

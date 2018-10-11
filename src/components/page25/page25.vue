@@ -24,6 +24,7 @@
                     class="choose_btn"
                     v-for="item in list2"
                     :class="item.className"
+                    :key="item.className"
                   >
                     <img :src="item.src" alt="">
                   </div>
@@ -120,14 +121,26 @@
           this.upLoadAnswer(stage, poinsts, 'page25', '2')
           this.audioLoad()
           this.audioLoad('audio27')
-          if ((this.filterData(this.uploadData.scope, 'page24') && this.filterData(this.uploadData.scope, 'page25')) || (!this.filterData(this.uploadData.scope, 'page24') && !this.filterData(this.uploadData.scope, 'page25'))) {
-            this.checkStatus = 2
-            this.goNext(27)
-            this.audioPlay('audio27')
+          if (this.forNextPageData && this.forNextPageData.num !== 25) {
+            if ((this.filterData(this.uploadData.scope, 'page24') && this.filterData(this.uploadData.scope, 'page25')) || (!this.filterData(this.uploadData.scope, 'page24') && !this.filterData(this.uploadData.scope, 'page25'))) {
+              this.checkStatus = 2
+              this.goNext(27)
+              this.audioPlay('audio27')
+            } else {
+              this.checkStatus = 1
+              this.goNext(26)
+              this.audioPlay()
+            }
           } else {
-            this.checkStatus = 1
-            this.goNext(26)
-            this.audioPlay()
+            if ((this.forNextPageData.forNextPageStatus && this.filterData(this.uploadData.scope, 'page25')) || (!this.forNextPageData.forNextPageStatus && !this.filterData(this.uploadData.scope, 'page25'))) {
+              this.checkStatus = 2
+              this.goNext(27)
+              this.audioPlay('audio27')
+            } else {
+              this.checkStatus = 1
+              this.goNext(26)
+              this.audioPlay()
+            }
           }
         }
       },
