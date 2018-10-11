@@ -213,17 +213,6 @@
         if (!this.password.trim()) return
         let This = this
         this.audioLoad()
-        // $.ajax({
-        //   /* eslint-disable no-undef */
-        //   url: loginOutUrl,
-        //   dataType: 'json',
-        //   type: 'POST',
-        //   data: {
-        //     'PassCode': 'aa03'
-        //   }
-        // })
-        // return;
-        // Login
         $.ajax({
           /* eslint-disable no-undef */
           url: loginUrl,
@@ -296,13 +285,14 @@
                   }
                 })
               }
-              if (data.QuestionId !== undefined && data.StageId === undefined) {
+              if (data.QuestionId !== undefined && data.StageId !== undefined) {
                 const h = This.$createElement
                 This.$notify({
                   title: 'Remind Message',
                   message: h('i', {style: 'color: teal'}, 'You still have unfinished questions, please continue to answer')
                 })
                 This.pageNumber = calcPage(data.StageId, data.QuestionId)
+                console.log(This.pageNumber)
                 This.siginPage = false
                 if (data.Score === 1) {
                   Vue.prototype.forNextPageData = {
@@ -340,25 +330,52 @@
     },
     components: {
       page1,
+      page5,
       page11,
+      page13,
+      page14,
       page15,
+      page16,
+      page17,
       page18,
+      page19,
+      page20,
       page21,
+      page22,
+      page23,
       page24,
+      page25,
+      page26,
       page27,
       page33,
+      page34,
+      page35,
       page36,
+      page37,
+      page38,
       page39,
       page44,
+      page45,
+      page46,
       page47,
+      page48,
+      page49,
       page50,
       page55,
       page56,
       page61,
+      page62,
+      page63,
       page64,
+      page65,
+      page66,
       page67,
       page72,
-      page75
+      page73,
+      page74,
+      page75,
+      page76,
+      page77
     }
   }
 </script>
