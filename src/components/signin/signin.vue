@@ -103,8 +103,10 @@
     <page74 v-if="pageNumber === 74"></page74>
 
     <page75 v-if="pageNumber === 75"></page75>
-    <page76 v-if="pageNumber === 75"></page76>
-    <page77 v-if="pageNumber === 76"></page77>
+    <page76 v-if="pageNumber === 76"></page76>
+    <page77 v-if="pageNumber === 77"></page77>
+
+    <page78 v-if="pageNumber === 78"></page78>
 
     <audio id="audio_page2" ref="audio" src="./static/MonkeyBusiness/1.mp3"></audio>
   </div>
@@ -172,6 +174,8 @@
   import page75 from 'components/page75/page75'
   import page76 from 'components/page76/page76'
   import page77 from 'components/page77/page77'
+
+  import page78 from 'components/page78/page78'
 
   import Vue from 'vue'
   import {goToNext} from 'common/js/mixins'
@@ -377,7 +381,8 @@
       page74,
       page75,
       page76,
-      page77
+      page77,
+      page78
     }
   }
 </script>
