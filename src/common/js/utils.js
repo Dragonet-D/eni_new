@@ -16,7 +16,7 @@ function stageOne(question) {
   let result
   switch (question) {
     case 0:
-      return 5
+      return 1
     case 1:
       return 11
     case 2:

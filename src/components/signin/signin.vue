@@ -286,31 +286,33 @@
                 })
               }
               if (data.QuestionId !== undefined && data.StageId !== undefined) {
-                const h = This.$createElement
-                This.$notify({
-                  title: 'Remind Message',
-                  message: h('i', {style: 'color: teal'}, 'You still have unfinished questions, please continue to answer')
-                })
-                This.pageNumber = calcPage(data.StageId, data.QuestionId)
-                console.log(This.pageNumber)
-                This.siginPage = false
-                if (data.Score === 1) {
-                  Vue.prototype.forNextPageData = {
-                    forNextPageStatus: true,
-                    num: calcPage(data.StageId, data.QuestionId)
-                  }
+                if (data.QuestionId === 0 && data.StageId === 1) {
+                  This.audioLoad()
+                  setTimeout(() => {
+                    This.audioPlay()
+                  }, 2000)
+                  This.goNext(1)
                 } else {
-                  Vue.prototype.forNextPageData = {
-                    forNextPageStatus: false,
-                    num: calcPage(data.StageId, data.QuestionId)
+                  const h = This.$createElement
+                  This.$notify({
+                    title: 'Remind Message',
+                    message: h('i', {style: 'color: teal'}, 'You still have unfinished questions, please continue to answer')
+                  })
+                  This.pageNumber = calcPage(data.StageId, data.QuestionId)
+                  console.log(This.pageNumber)
+                  This.siginPage = false
+                  if (data.Score === 1) {
+                    Vue.prototype.forNextPageData = {
+                      forNextPageStatus: true,
+                      num: calcPage(data.StageId, data.QuestionId)
+                    }
+                  } else {
+                    Vue.prototype.forNextPageData = {
+                      forNextPageStatus: false,
+                      num: calcPage(data.StageId, data.QuestionId)
+                    }
                   }
                 }
-              } else {
-                This.audioLoad()
-                setTimeout(() => {
-                  This.audioPlay()
-                }, 2000)
-                This.goNext(1)
               }
             } else {
               This.message = data.Message
