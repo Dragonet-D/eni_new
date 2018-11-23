@@ -31,7 +31,7 @@
             >Sign In
             </button>
           </div>
-          <!-- <button @click="clear">clear</button> -->
+          <!--<button @click="clear">clear</button>-->
         </div>
         <div
           class="layer"
@@ -198,9 +198,8 @@
       }
     },
     mounted() {
-      const { password } = historystore.fetch('eni-user-info')
+      const {password} = historystore.fetch('eni-user-info')
       let This = this
-      console.log(timer)
       if (password) {
         $.ajax({
           /* eslint-disable no-undef */
@@ -222,6 +221,28 @@
       messageClick() {
         this.messageShow = false
         clearTimeout(timer)
+      },
+      loginOut() {
+        $.ajax({
+          /* eslint-disable no-undef */
+          url: loginOutUrl,
+          dataType: 'json',
+          type: 'POST',
+          data: {
+            'PassCode': historystore.fetch('eni-user-info').password
+          }
+        })
+      },
+      clear() {
+        $.ajax({
+          /* eslint-disable no-undef */
+          url: loginOutUrl,
+          dataType: 'json',
+          type: 'POST',
+          data: {
+            'PassCode': '00000001'
+          }
+        })
       },
       loginIn(This, password, remind = true) {
         $.ajax({
@@ -246,11 +267,25 @@
                     title: 'Error Message',
                     message: h('i', {style: 'color: teal'}, 'Your session has expired due to 15 minutes of inactivity, please login again')
                   })
+                  This.loginOut()
+                  historystore.clearall()
                   setTimeout(() => {
                     window.location.reload()
-                  }, 3000)
+                  }, 1000)
                 }, 1000 * 60 * 15)
               }
+              timer = setTimeout(() => {
+                const h = This.$createElement
+                This.$notify.error({
+                  title: 'Error Message',
+                  message: h('i', {style: 'color: teal'}, 'Your session has expired due to 15 minutes of inactivity, please login again')
+                })
+                This.loginOut()
+                historystore.clearall()
+                setTimeout(() => {
+                  window.location.reload()
+                }, 1000)
+              }, 1000 * 60 * 15)
               setInterval(() => {
                 $.ajax({
                   /* eslint-disable no-undef */
@@ -267,21 +302,15 @@
                         title: 'Error Message',
                         message: h('i', {style: 'color: teal'}, data.Message)
                       })
-                      setTimeout(() => {
-                        if (timer) {
-                          clearTimeout(timer)
-                        }
-                        $.ajax({
-                          /* eslint-disable no-undef */
-                          url: loginOutUrl,
-                          dataType: 'json',
-                          type: 'POST',
-                          data: {
-                            'PassCode': historystore.fetch('eni-user-info').password
+                      if (historystore.fetch('eni-user-info').password) {
+                        setTimeout(() => {
+                          if (timer) {
+                            clearTimeout(timer)
                           }
-                        })
-                        window.location.reload()
-                      }, 3000)
+                          This.loginOut()
+                          window.location.reload()
+                        }, 100)
+                      }
                     }
                   }
                 })
@@ -295,15 +324,9 @@
                 scope: []
               }
               window.onunload = () => {
-                $.ajax({
-                  /* eslint-disable no-undef */
-                  url: loginOutUrl,
-                  dataType: 'json',
-                  type: 'POST',
-                  data: {
-                    'PassCode': historystore.fetch('eni-user-info').password
-                  }
-                })
+                if (historystore.fetch('eni-user-info').password) {
+                  This.loginOut()
+                }
               }
               if (data.QuestionId !== undefined && data.StageId !== undefined) {
                 if (data.QuestionId === 0 && data.StageId === 1) {
