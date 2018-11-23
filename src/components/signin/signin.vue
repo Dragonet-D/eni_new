@@ -197,39 +197,46 @@
         siginPage: true
       }
     },
-    methods: {
-      messageClick() {
-        this.messageShow = false
-        clearTimeout(this.timer)
-      },
-      clear() {
+    mounted() {
+      const { password } = historystore.fetch('eni-user-info')
+      let This = this
+      console.log(timer)
+      if (password) {
         $.ajax({
           /* eslint-disable no-undef */
           url: loginOutUrl,
           dataType: 'json',
           type: 'POST',
           data: {
-            'PassCode': 'aa02'
+            'PassCode': historystore.fetch('eni-user-info').password
+          },
+          success(data) {
+            if (data.Success === true) {
+              This.loginIn(This, password, false)
+            }
           }
         })
+      }
+    },
+    methods: {
+      messageClick() {
+        this.messageShow = false
+        clearTimeout(timer)
       },
-      signIn() {
-        if (!this.password.trim()) return
-        let This = this
-        this.audioLoad()
+      loginIn(This, password, remind = true) {
         $.ajax({
           /* eslint-disable no-undef */
           url: loginUrl,
           dataType: 'json',
           type: 'POST',
           data: {
-            'PassCode': this.password
+            'PassCode': password
           },
           success(data) {
             // console.log(data)
             if (data.Success === true) {
               const body = document.querySelector('body')
-              body.onclick = function() {
+              body.onclick = function () {
                 if (timer) {
                   clearTimeout(timer)
                 }
@@ -264,6 +271,15 @@
                         if (timer) {
                           clearTimeout(timer)
                         }
+                        $.ajax({
+                          /* eslint-disable no-undef */
+                          url: loginOutUrl,
+                          dataType: 'json',
+                          type: 'POST',
+                          data: {
+                            'PassCode': historystore.fetch('eni-user-info').password
+                          }
+                        })
                         window.location.reload()
                       }, 3000)
                     }
@@ -272,7 +288,7 @@
               }, 10000)
               historystore.save({
                 userid: data.UserId,
-                password: This.password
+                password: password
               })
               Vue.prototype.uploadData = {
                 userid: historystore.fetch().userid,
@@ -297,13 +313,14 @@
                   }, 2000)
                   This.goNext(1)
                 } else {
-                  const h = This.$createElement
-                  This.$notify({
-                    title: 'Remind Message',
-                    message: h('i', {style: 'color: teal'}, 'You still have unfinished questions, please continue to answer')
-                  })
+                  if (remind) {
+                    const h = This.$createElement
+                    This.$notify({
+                      title: 'Remind Message',
+                      message: h('i', {style: 'color: teal'}, 'You still have unfinished questions, please continue to answer')
+                    })
+                  }
                   This.pageNumber = calcPage(data.StageId, data.QuestionId)
-                  console.log(This.pageNumber)
                   This.siginPage = false
                   if (data.Score === 1) {
                     Vue.prototype.forNextPageData = {
@@ -332,6 +349,12 @@
             }
           }
         })
+      },
+      signIn() {
+        if (!this.password.trim()) return
+        let This = this
+        this.audioLoad()
+        this.loginIn(This, this.password)
       }
     },
     components: {
@@ -397,6 +420,7 @@
     border-radius: 30px;
     color: #586081;
     font-size: 28px;
+
     .sign_content {
       padding: percent(24, 295) percent(24, 380);
       width: percent(332, 380);
@@ -404,14 +428,17 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+
       .username {
         display: none;
       }
+
       div {
         height: percent(84, 247);
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+
         input {
           width: 100%;
           height: 50%;
@@ -420,10 +447,12 @@
           border: 1px solid #d1d5da;
           border-radius: 10px;
         }
+
         input::-webkit-input-placeholder {
           color: #bcbfc1;
         }
       }
+
       .sign_in {
         .btn {
           height: 50%;
@@ -435,6 +464,7 @@
         }
       }
     }
+
     .layer {
       position: absolute;
       width: 100%;
@@ -446,6 +476,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
       .layer_content {
         position: relative;
         width: 90%;
@@ -458,6 +489,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+
         .message {
           position: absolute;
         }
