@@ -20,7 +20,7 @@
             <img src="./stage5-1.png" alt="">
           </div>
           <div
-            class="after"
+            class="after animation_fruit"
             v-show="goAfter"
           >
             <img src="./stage5-2.png" alt="">
@@ -102,6 +102,8 @@
     height: percent(290, 720);
     left: percent(782, 1280);
     top: percent(72, 720);
+  }
+  .animation_fruit {
     animation: bounce .8s ease-in-out infinite;
     -webkit-animation: bounce .8s ease-in-out infinite;
   }

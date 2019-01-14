@@ -17,7 +17,7 @@
           </div>
           <div
             v-show="goStatus"
-            class="bonus"
+            class="bonus animation_fruit"
             :class="goStatus ? 'bonus_active':''"
           >
             <div class="bonus_content">
@@ -76,10 +76,11 @@
     left: percent(284, 1280);
     top: percent(390, 720);
     overflow: hidden;
+  }
+  .animation_fruit {
     animation: bounce .8s ease-in-out infinite;
     -webkit-animation: bounce .8s ease-in-out infinite;
   }
-
   @keyframes bounce {
     0% {
       transform: translate(0, 0);
