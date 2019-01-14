@@ -58,7 +58,9 @@
         this.audioLoad('audio4')
         this.audioLoad('audio5')
         if (this.canGoNext) {
-          this.init()
+          document.querySelector('#audio_page7_1').addEventListener('canplaythrough', () => {
+            this.init()
+          })
           this.goNext(num)
           // this.audioPlay()
           this.audioPlay('audio0')

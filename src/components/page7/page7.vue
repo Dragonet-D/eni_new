@@ -161,7 +161,9 @@
   export default {
     mixins: [goToNext, patterns],
     created() {
-      this.init()
+      document.querySelector('#audio_page7_1').addEventListener('canplaythrough', () => {
+        this.init()
+      })
     },
     data() {
       return {
