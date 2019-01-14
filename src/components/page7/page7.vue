@@ -288,7 +288,6 @@
           this.list[1].src = ''
         } else if (newVaule === 22) {
           // 4 播放
-          this.guideAll.replay = true
           this.guideAll.targetbox = false
           this.guideAll.handeStatus = false
           this.list2 = [{
@@ -298,13 +297,17 @@
           }]
           this.guideAll.hand = false
           this.guideAll.checkbtn = false
+        } else if (newVaule === 26) {
+          this.guideAll.replay = true
         } else if (newVaule === 27) {
           // 5 播放
           this.guideAll.checkbtn = false
-          this.guideAll.replay = false
           this.guideAll.targetbox = false
+        } else if (newVaule === 29) {
+          this.guideAll.replay = false
+        } else if (newVaule === 30) {
           this.guideAll.candrag = true
-        } else if (newVaule === 31) {
+        } else if (newVaule === 33) {
           // 6 播放
           this.guideAll.wrapper = false
           this.list2 = []
@@ -332,14 +335,17 @@
     top: 0;
     bottom: 0;
     z-index: 10;
+
     .hand_content {
       position: relative;
       width: 100%;
       height: 100%;
+
       div {
         box-sizing: border-box;
         position: absolute;
       }
+
       .img_wrapper {
         position: absolute;
         left: percent(244, 1280);
@@ -349,14 +355,17 @@
         z-index: 2;
         transition: all 2s;
       }
+
       .img_wrapper_active {
         left: percent(1100, 1280);
         top: percent(200, 720);
       }
+
       .img_hand_active {
         left: percent(1095, 1280);
         top: percent(200, 720);
       }
+
       .single_hand {
         width: percent(149, 1280);
         height: percent(259, 720);
@@ -364,21 +373,27 @@
         top: percent(332, 720);
         left: percent(40, 1280);
       }
+
       .single_hand_1 {
         left: percent(220, 1280);
       }
+
       .single_hand_2 {
         left: percent(400, 1280);
       }
+
       .single_hand_3 {
         left: percent(590, 1280);
       }
+
       .single_hand_4 {
         left: percent(760, 1280);
       }
+
       .single_hand_5 {
         animation: move 4s;
       }
+
       @keyframes move {
         16.5% {
           left: percent(40, 1280);
@@ -399,6 +414,7 @@
           left: percent(940, 1280);
         }
       }
+
       .taget_line {
         width: percent(1100, 1280);
         height: percent(211, 720);
@@ -407,6 +423,7 @@
         border-radius: 30px;
         border: 8px solid red;
       }
+
       .target_box {
         width: percent(200, 1280);
         height: percent(200, 720);
@@ -415,6 +432,7 @@
         border-radius: 30px;
         border: 8px solid red;
       }
+
       .replay {
         width: percent(110, 1280);
         height: percent(110, 720);
@@ -423,6 +441,7 @@
         border-radius: 30px;
         border: 8px solid red;
       }
+
       .can_drag {
         width: percent(892, 1280);
         height: percent(218, 720);
@@ -431,6 +450,7 @@
         border-radius: 30px;
         border: 8px solid red;
       }
+
       .check_btn {
         width: percent(151, 1280);
         height: percent(151, 720);
@@ -445,6 +465,7 @@
         border-radius: 30px;
         border: 8px solid red;
       }
+
       .monkey {
         width: percent(291, 1280);
         height: percent(253, 720);

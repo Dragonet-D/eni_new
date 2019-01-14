@@ -183,6 +183,7 @@
   import $ from 'jquery'
 
   let timer = null
+  const NO_HANDLE_TIMER = 1000 * 60 * 15
 
   export default {
     mixins: [goToNext],
@@ -244,7 +245,80 @@
           }
         })
       },
+      interval() {
+        const This = this
+        setInterval(() => {
+          $.ajax({
+            /* eslint-disable no-undef */
+            url: keepValidate,
+            dataType: 'json',
+            type: 'POST',
+            data: {
+              'PassCode': historystore.fetch('eni-user-info').password
+            },
+            success(data) {
+              if (data.Success === false) {
+                const h = This.$createElement
+                This.$notify.error({
+                  title: 'Error Message',
+                  message: h('i', {style: 'color: teal'}, data.Message)
+                })
+                if (historystore.fetch('eni-user-info').password) {
+                  setTimeout(() => {
+                    if (timer) {
+                      clearTimeout(timer)
+                    }
+                    This.loginOut()
+                    historystore.clearall()
+                    window.location.reload()
+                  }, 1000)
+                }
+              }
+            }
+          })
+        }, 10000)
+      },
+      timeOutSet() {
+        const This = this
+        if (timer) {
+          clearTimeout(timer)
+        }
+        timer = setTimeout(() => {
+          const h = This.$createElement
+          This.$notify.error({
+            title: 'Error Message',
+            message: h('i', {style: 'color: teal'}, 'Your session has expired due to 15 minutes of inactivity, please login again')
+          })
+          This.loginOut()
+          historystore.clearall()
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000)
+        }, NO_HANDLE_TIMER)
+      },
+      timeOut() {
+        const This = this
+        const body = document.querySelector('body')
+        body.addEventListener('touchstart', () => {
+          This.timeOutSet()
+        })
+        body.addEventListener('mousedown', () => {
+          This.timeOutSet()
+        })
+      },
       loginIn(This, password, remind = true) {
+        timer = setTimeout(() => {
+          const h = This.$createElement
+          This.$notify.error({
+            title: 'Error Message',
+            message: h('i', {style: 'color: teal'}, 'Your session has expired due to 15 minutes of inactivity, please login again')
+          })
+          This.loginOut()
+          historystore.clearall()
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000)
+        }, NO_HANDLE_TIMER)
         $.ajax({
           /* eslint-disable no-undef */
           url: loginUrl,
@@ -256,65 +330,8 @@
           success(data) {
             // console.log(data)
             if (data.Success === true) {
-              const body = document.querySelector('body')
-              body.onclick = function () {
-                if (timer) {
-                  clearTimeout(timer)
-                }
-                timer = setTimeout(() => {
-                  const h = This.$createElement
-                  This.$notify.error({
-                    title: 'Error Message',
-                    message: h('i', {style: 'color: teal'}, 'Your session has expired due to 15 minutes of inactivity, please login again')
-                  })
-                  This.loginOut()
-                  historystore.clearall()
-                  setTimeout(() => {
-                    window.location.reload()
-                  }, 1000)
-                }, 1000 * 60 * 15)
-              }
-              timer = setTimeout(() => {
-                const h = This.$createElement
-                This.$notify.error({
-                  title: 'Error Message',
-                  message: h('i', {style: 'color: teal'}, 'Your session has expired due to 15 minutes of inactivity, please login again')
-                })
-                This.loginOut()
-                historystore.clearall()
-                setTimeout(() => {
-                  window.location.reload()
-                }, 1000)
-              }, 1000 * 60 * 15)
-              setInterval(() => {
-                $.ajax({
-                  /* eslint-disable no-undef */
-                  url: keepValidate,
-                  dataType: 'json',
-                  type: 'POST',
-                  data: {
-                    'PassCode': historystore.fetch('eni-user-info').password
-                  },
-                  success(data) {
-                    if (data.Success === false) {
-                      const h = This.$createElement
-                      This.$notify.error({
-                        title: 'Error Message',
-                        message: h('i', {style: 'color: teal'}, data.Message)
-                      })
-                      if (historystore.fetch('eni-user-info').password) {
-                        setTimeout(() => {
-                          if (timer) {
-                            clearTimeout(timer)
-                          }
-                          This.loginOut()
-                          window.location.reload()
-                        }, 100)
-                      }
-                    }
-                  }
-                })
-              }, 10000)
+              This.timeOut()
+              This.interval()
               historystore.save({
                 userid: data.UserId,
                 password: password

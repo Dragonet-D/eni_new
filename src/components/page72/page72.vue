@@ -51,7 +51,7 @@
                       :style="item.remind ? item.remind : ''"
                       :key="item.id"
                       :data-id="item.id"
-                      @mousedown.stop="cancleAnswer"
+                      @mousedown="cancleAnswer"
                     >
                       <img :src="item.src" alt="">
                     </div>

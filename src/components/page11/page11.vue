@@ -39,7 +39,7 @@
               <div class="btns_content">
                 <div
                   class="choose_btns"
-                  @touchstart.stop="cancleAnswer"
+                  @touchstart="cancleAnswer"
                 >
                   <draggable
                     v-model="list"
@@ -56,7 +56,7 @@
                       :style="item.remind ? item.remind : ''"
                       :key="item.id"
                       :data-id="item.id"
-                      @mousedown.stop="cancleAnswer"
+                      @mousedown="cancleAnswer"
                     >
                       <img :src="item.src" alt="">
                     </div>
