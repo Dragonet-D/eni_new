@@ -12,7 +12,6 @@
             <div class="monkey_content">
               <img src="./stage-monkey.png" alt="">
             </div>
-
           </div>
           <div
             class="before"
@@ -111,31 +110,31 @@
 
   @keyframes bounce {
     0% {
-      transform: translate(0, 0);
-      -webkit-transform: translate(0, 0);
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
     }
     50% {
-      transform: translate(0, percent(-20, 720));
-      -webkit-transform: translate(0, percent(-20, 720));
+      transform: translate3d(0, percent(-20, 720), 0);
+      -webkit-transform: translate3d(0, percent(-20, 720), 0);
     }
     100% {
-      transform: translate(0, 0);
-      -webkit-transform: translate(0, 0);
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
     }
   }
 
   @-webkit-keyframes bounce {
     0% {
-      transform: translate(0, 0);
-      -webkit-transform: translate(0, 0);
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
     }
     50% {
-      transform: translate(0, percent(-20, 720));
-      -webkit-transform: translate(0, percent(-20, 720));
+      transform: translate3d(0, percent(-20, 720), 0);
+      -webkit-transform: translate3d(0, percent(-20, 720), 0);
     }
     100% {
-      transform: translate(0, 0);
-      -webkit-transform: translate(0, 0);
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
     }
   }
 </style>
