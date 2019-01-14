@@ -12,7 +12,6 @@
             <div class="monkey_content">
               <img src="./stage-monkey.png" alt="">
             </div>
-
           </div>
           <div
             class="before"
