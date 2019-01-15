@@ -105,40 +105,26 @@
 
   .page6_start_wrapper {
     @extend %page_start_wrapper;
+
     .empty {
       flex: 320;
     }
+
     .start_btn_wrapper {
       flex: 280;
+
       .start_btn {
         margin-left: percent(290);
         width: percent(300);
         height: percent(140, 280);
         user-select: none;
         border-radius: 4%;
+
         img {
           width: 100%;
           height: 100%;
         }
       }
-    }
-  }
-
-  @keyframes box-s {
-    0% {
-      box-shadow: 0 0 50px rgba(255, 248, 0, 1);
-    }
-    100% {
-      box-shadow: 0 0 50px rgba(255, 248, 0, 0);
-    }
-  }
-
-  @-webkit-keyframes box-s {
-    0% {
-      box-shadow: 0 0 50px rgba(255, 248, 0, 1);
-    }
-    100% {
-      box-shadow: 0 0 50px rgba(255, 248, 0, 0);
     }
   }
 </style>
