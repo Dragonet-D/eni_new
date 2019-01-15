@@ -395,6 +395,8 @@
                 'PassCode': historystore.fetch('eni-user-info').password
               }
             })
+            historystore.clearall()
+            historystore.localClearall()
             this.showStatus = 1
             this.$refs.audio6.play()
             clearInterval(this.timer)

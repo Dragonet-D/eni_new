@@ -9,7 +9,21 @@ export const historystore = {
   },
   clearall(key = 'eni-user-info') {
     sessionStorage.clear(key)
+  },
+  localSave(value) {
+    localStorage.setItem('eni-user-info', JSON.stringify(value))
+  },
+  localFetch() {
+    return JSON.parse(localStorage.getItem('eni-user-info')) || {}
+  },
+  localClearall(key = 'eni-user-info') {
+    localStorage.clear(key)
   }
+}
+
+export const compareTime = (target) => {
+  const sum = Date.now() - parseInt(target)
+  return sum < 1000 * 60 * 15
 }
 
 function stageOne(question) {
@@ -66,6 +80,7 @@ function stageOne(question) {
   }
   return result
 }
+
 function stageTwo(question) {
   let result
   switch (question) {
@@ -88,6 +103,7 @@ function stageTwo(question) {
   }
   return result
 }
+
 function stageThree(question) {
   let result
   switch (question) {
@@ -110,6 +126,7 @@ function stageThree(question) {
   }
   return result
 }
+
 function stageFour(question) {
   let result
   switch (question) {
@@ -128,6 +145,7 @@ function stageFour(question) {
   }
   return result
 }
+
 function stageFive(question) {
   let result
   switch (question) {
@@ -150,6 +168,7 @@ function stageFive(question) {
   }
   return result
 }
+
 function stageSix(question) {
   let result
   switch (question) {
@@ -172,6 +191,7 @@ function stageSix(question) {
   }
   return result
 }
+
 // 计算跳转页面
 export const calcPage = (stage, question) => {
   switch (stage) {

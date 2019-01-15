@@ -14,13 +14,7 @@
             </div>
           </div>
           <div
-            class="before"
-            v-show="goBfore"
-          >
-            <img src="./stage1-1.png" alt="">
-          </div>
-          <div
-            class="after animation_fruit"
+            class="after bounce"
             v-show="goAfter"
           >
             <div class="after_content">
@@ -88,15 +82,6 @@
     top: percent(248, 720);
   }
 
-  .before {
-    position: absolute;
-    width: percent(190, 1280);
-    height: percent(290, 720);
-    left: percent(248, 1280);
-    top: percent(98, 720);
-    z-index: 2;
-  }
-
   .after {
     position: absolute;
     width: percent(190, 1280);
@@ -104,38 +89,5 @@
     left: percent(248, 1280);
     top: percent(80, 720);
     z-index: 2;
-  }
-  .animation_fruit {
-    animation: bounce .8s ease-in-out infinite;
-    -webkit-animation: bounce .8s ease-in-out infinite;
-  }
-  @keyframes bounce {
-    0% {
-      transform: translate3d(0, 0, 0);
-      -webkit-transform: translate3d(0, 0, 0);
-    }
-    50% {
-      transform: translate3d(0, percent(-20, 720), 0);
-      -webkit-transform: translate3d(0, percent(-20, 720), 0);
-    }
-    100% {
-      transform: translate3d(0, 0, 0);
-      -webkit-transform: translate3d(0, 0, 0);
-    }
-  }
-
-  @-webkit-keyframes bounce {
-    0% {
-      transform: translate3d(0, 0, 0);
-      -webkit-transform: translate3d(0, 0, 0);
-    }
-    50% {
-      transform: translate3d(0, percent(-20, 720), 0);
-      -webkit-transform: translate3d(0, percent(-20, 720), 0);
-    }
-    100% {
-      transform: translate3d(0, 0, 0);
-      -webkit-transform: translate3d(0, 0, 0);
-    }
   }
 </style>

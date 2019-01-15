@@ -14,13 +14,7 @@
             </div>
           </div>
           <div
-            class="before"
-            v-show="goBefore"
-          >
-            <img src="./stage2-1.png" alt="">
-          </div>
-          <div
-            class="after animation_fruit"
+            class="after bounce"
             v-show="goAfter"
           >
             <img src="./stage2-2.png" alt="">
@@ -85,15 +79,6 @@
     left: percent(496, 1280);
     top: percent(143, 720);
   }
-
-  .before {
-    position: absolute;
-    z-index: 2;
-    width: percent(190, 1280);
-    height: percent(290, 720);
-    left: percent(450, 1280);
-    top: percent(-25, 720);
-  }
   .after {
     position: absolute;
     z-index: 2;
@@ -101,38 +86,5 @@
     height: percent(290, 720);
     left: percent(440, 1280);
     top: percent(-18, 720);
-  }
-  .animation_fruit {
-    animation: bounce .8s ease-in-out infinite;
-    -webkit-animation: bounce .8s ease-in-out infinite;
-  }
-  @keyframes bounce {
-    0% {
-      transform: translate(0, 0);
-      -webkit-transform: translate(0, 0);
-    }
-    50% {
-      transform: translate(0, percent(-20, 720));
-      -webkit-transform: translate(0, percent(-20, 720));
-    }
-    100% {
-      transform: translate(0, 0);
-      -webkit-transform: translate(0, 0);
-    }
-  }
-
-  @-webkit-keyframes bounce {
-    0% {
-      transform: translate(0, 0);
-      -webkit-transform: translate(0, 0);
-    }
-    50% {
-      transform: translate(0, percent(-20, 720));
-      -webkit-transform: translate(0, percent(-20, 720));
-    }
-    100% {
-      transform: translate(0, 0);
-      -webkit-transform: translate(0, 0);
-    }
   }
 </style>

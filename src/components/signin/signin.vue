@@ -2,6 +2,7 @@
   <div
     class="page_wrapper"
   >
+    <!--<div class="bounce" style="width: 100px;height: 100px;background-color: red; margin: 40px auto"></div>-->
     <div class="sign_in page" v-show="pageStatus && siginPage">
       <div class="page_content">
         <div class="sign_content">
@@ -31,7 +32,7 @@
             >Sign In
             </button>
           </div>
-          <!--<button @click="clear">clear</button>-->
+          <button @click="clear">clear</button>
         </div>
         <div
           class="layer"
@@ -179,7 +180,7 @@
 
   import Vue from 'vue'
   import {goToNext} from 'common/js/mixins'
-  import {historystore, calcPage} from 'common/js/utils'
+  import {historystore, calcPage, compareTime} from 'common/js/utils'
   import $ from 'jquery'
 
   let timer = null
@@ -241,7 +242,7 @@
           dataType: 'json',
           type: 'POST',
           data: {
-            'PassCode': '00000001'
+            'PassCode': '00000005'
           }
         })
       },
@@ -270,6 +271,7 @@
                     }
                     This.loginOut()
                     historystore.clearall()
+                    historystore.localClearall()
                     window.location.reload()
                   }, 1000)
                 }
@@ -291,6 +293,7 @@
           })
           This.loginOut()
           historystore.clearall()
+          historystore.localClearall()
           setTimeout(() => {
             window.location.reload()
           }, 1000)
@@ -315,6 +318,7 @@
           })
           This.loginOut()
           historystore.clearall()
+          historystore.localClearall()
           setTimeout(() => {
             window.location.reload()
           }, 1000)
@@ -325,7 +329,8 @@
           dataType: 'json',
           type: 'POST',
           data: {
-            'PassCode': password
+            PassCode: password,
+            LocalValid: password === historystore.localFetch().password && compareTime(historystore.localFetch().time)
           },
           success(data) {
             // console.log(data)
@@ -335,6 +340,11 @@
               historystore.save({
                 userid: data.UserId,
                 password: password
+              })
+              historystore.localSave({
+                userid: data.UserId,
+                password: password,
+                time: Date.now()
               })
               Vue.prototype.uploadData = {
                 userid: historystore.fetch().userid,
