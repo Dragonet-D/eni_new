@@ -19,6 +19,12 @@
       </div>
       <page5 v-if="!pageStatus"></page5>
       <audio id="audio_page5" ref="audio" src="./static/MonkeyBusiness/4.mp3"></audio>
+      <audio id="audio_page7_1" class="audio_page7" ref="audio0" src="./static/MonkeyBusiness/6.mp3"></audio>
+      <audio id="audio_page7_2" class="audio_page7" ref="audio1" src="./static/MonkeyBusiness/7.mp3"></audio>
+      <audio id="audio_page7_3" class="audio_page7" ref="audio2" src="./static/MonkeyBusiness/8.mp3"></audio>
+      <audio id="audio_page7_4" class="audio_page7" ref="audio3" src="./static/MonkeyBusiness/9.mp3"></audio>
+      <audio id="audio_page7_5" class="audio_page7" ref="audio4" src="./static/MonkeyBusiness/10.mp3"></audio>
+      <audio id="audio_page7_6" class="audio_page7" ref="audio5" src="./static/MonkeyBusiness/11.mp3"></audio>
     </div>
   </transition>
 </template>
@@ -31,6 +37,12 @@
     mixins: [goToNext],
     methods: {
       checkToNext(num) {
+        this.audioLoad('audio0')
+        this.audioLoad('audio1')
+        this.audioLoad('audio2')
+        this.audioLoad('audio3')
+        this.audioLoad('audio4')
+        this.audioLoad('audio5')
         this.prevOnePause(num - 1)
         this.audioPlay()
         this.goNext(num)

@@ -32,7 +32,7 @@
             >Sign In
             </button>
           </div>
-          <button @click="clear">clear</button>
+          <!--<button @click="clear">clear</button>-->
         </div>
         <div
           class="layer"

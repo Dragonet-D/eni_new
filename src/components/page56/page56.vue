@@ -24,6 +24,12 @@
       <page57 v-if="!pageStatus"></page57>
       <audio id="audio_page57" ref="audio" src="./static/MonkeyBusiness/61.mp3"></audio>
       <audio ref="audio62" src="./static/MonkeyBusiness/62.mp3"></audio>
+      <audio id="audio_page57_1" ref="audio0" src="./static/MonkeyBusiness/62.mp3"></audio>
+      <audio id="audio_page57_2" ref="audio1" src="./static/MonkeyBusiness/18.mp3"></audio>
+      <audio id="audio_page57_3" ref="audio2" src="./static/MonkeyBusiness/64.mp3"></audio>
+      <audio id="audio_page57_4" ref="audio3" src="./static/MonkeyBusiness/65.mp3"></audio>
+      <audio id="audio_page57_5" ref="audio4" src="./static/MonkeyBusiness/21.mp3"></audio>
+      <audio id="audio_page57_6" ref="audio5" src="./static/MonkeyBusiness/11.mp3"></audio>
     </div>
   </transition>
 </template>
@@ -46,6 +52,12 @@
       goNextStage() {
         this.goStatus = true
         this.audioLoad()
+        this.$refs.audio0.load()
+        this.$refs.audio1.load()
+        this.$refs.audio2.load()
+        this.$refs.audio3.load()
+        this.$refs.audio4.load()
+        this.$refs.audio5.load()
         this.audioLoad('audio62')
         setTimeout(() => {
           this.audioPlay()

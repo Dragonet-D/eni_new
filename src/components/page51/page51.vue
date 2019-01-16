@@ -19,12 +19,6 @@
       </div>
       <page52 v-if="!pageStatus"></page52>
       <audio ref="audio" src="./static/MonkeyBusiness/51.mp3"></audio>
-      <audio ref="audio1" src="./static/MonkeyBusiness/52.mp3"></audio>
-      <audio ref="audio2" src="./static/MonkeyBusiness/53.mp3"></audio>
-      <audio ref="audio3" src="./static/MonkeyBusiness/54.mp3"></audio>
-      <audio ref="audio4" src="./static/MonkeyBusiness/55.mp3"></audio>
-      <audio ref="audio5" src="./static/MonkeyBusiness/56.mp3"></audio>
-      <audio ref="audio6" src="./static/MonkeyBusiness/11.mp3"></audio>
     </div>
   </transition>
 </template>
@@ -49,17 +43,11 @@
     methods: {
       goGuide() {
         this.audioLoad()
-        this.audioLoad('audio1')
-        this.audioLoad('audio2')
-        this.audioLoad('audio3')
-        this.audioLoad('audio4')
-        this.audioLoad('audio5')
-        this.audioLoad('audio6')
         if (this.canGoNext) {
           this.init()
           this.goNext(52)
           // this.audioPlay()
-          this.audioPlay('audio1')
+          document.querySelector('#audio_page51_1').play()
         }
       },
       init() {
@@ -138,16 +126,16 @@
       guideRemidnum(newValue) {
         if (newValue === 6) {
         } else if (newValue === 7) {
-          this.audioPlay('audio2')
+          document.querySelector('#audio_page51_2').play()
         } else if (newValue === 11) {
-          this.audioPlay('audio3')
+          document.querySelector('#audio_page51_3').play()
         } else if (newValue === 13) {
-          this.audioPlay('audio4')
+          document.querySelector('#audio_page51_4').play()
         } else if (newValue === 17) {
         } else if (newValue === 19) {
-          this.audioPlay('audio5')
+          document.querySelector('#audio_page51_5').play()
         } else if (newValue === 23) {
-          this.audioPlay('audio6')
+          document.querySelector('#audio_page51_6').play()
         } else if (newValue === 26) {
           clearInterval(this.guideTimer)
         }
