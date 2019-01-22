@@ -19,11 +19,6 @@
       </div>
       <page69 v-if="!pageStatus"/>
       <audio ref="audio" src="./static/MonkeyBusiness/71.mp3"></audio>
-      <audio ref="audio1" src="./static/MonkeyBusiness/72.mp3"></audio>
-      <audio ref="audio2" src="./static/MonkeyBusiness/73.mp3"></audio>
-      <audio ref="audio3" src="./static/MonkeyBusiness/74.mp3"></audio>
-      <audio ref="audio4" src="./static/MonkeyBusiness/75.mp3"></audio>
-      <audio ref="audio5" src="./static/MonkeyBusiness/11.mp3"></audio>
     </div>
   </transition>
 </template>
@@ -53,16 +48,11 @@
       },
       goGuide() {
         this.$refs.audio.load()
-        this.$refs.audio1.load()
-        this.$refs.audio2.load()
-        this.$refs.audio3.load()
-        this.$refs.audio4.load()
-        this.$refs.audio5.load()
         if (this.canGoNext) {
           this.init()
           this.goNext(69)
           // this.audioPlay()
-          this.$refs.audio1.play()
+          document.querySelector('#audio_page68_1').play()
         }
       }
     },
@@ -70,14 +60,14 @@
       guideNum(newValue) {
         if (newValue === 0) {
         } else if (newValue === 11) {
-          this.$refs.audio2.play()
+          document.querySelector('#audio_page68_2').play()
         } else if (newValue === 13) {
-          this.$refs.audio3.play()
+          document.querySelector('#audio_page68_3').play()
         } else if (newValue === 15) {
-          this.$refs.audio4.play()
+          document.querySelector('#audio_page68_4').play()
         } else if (newValue === 21) {
         } else if (newValue === 23) {
-          this.$refs.audio5.play()
+          document.querySelector('#audio_page68_5').play()
         } else if (newValue === 25) {
           clearInterval(this.guideNum)
         }

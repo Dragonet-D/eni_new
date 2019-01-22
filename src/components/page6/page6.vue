@@ -16,12 +16,6 @@
       </div>
       <page7 v-if="!pageStatus"></page7>
       <audio id="audio_page7" class="audio_page7" ref="audio" src="./static/MonkeyBusiness/5.mp3"></audio>
-      <audio id="audio_page7_1" class="audio_page7" ref="audio0" src="./static/MonkeyBusiness/6.mp3"></audio>
-      <audio id="audio_page7_2" class="audio_page7" ref="audio1" src="./static/MonkeyBusiness/7.mp3"></audio>
-      <audio id="audio_page7_3" class="audio_page7" ref="audio2" src="./static/MonkeyBusiness/8.mp3"></audio>
-      <audio id="audio_page7_4" class="audio_page7" ref="audio3" src="./static/MonkeyBusiness/9.mp3"></audio>
-      <audio id="audio_page7_5" class="audio_page7" ref="audio4" src="./static/MonkeyBusiness/10.mp3"></audio>
-      <audio id="audio_page7_6" class="audio_page7" ref="audio5" src="./static/MonkeyBusiness/11.mp3"></audio>
     </div>
   </transition>
 </template>
@@ -51,19 +45,12 @@
       },
       checkToNext(num) {
         this.audioLoad('audio')
-        this.audioLoad('audio0')
-        this.audioLoad('audio1')
-        this.audioLoad('audio2')
-        this.audioLoad('audio3')
-        this.audioLoad('audio4')
-        this.audioLoad('audio5')
+
         if (this.canGoNext) {
-          document.querySelector('#audio_page7_1').addEventListener('canplaythrough', () => {
-            this.init()
-          })
+          this.init()
           this.goNext(num)
           // this.audioPlay()
-          this.audioPlay('audio0')
+          document.querySelector('#audio_page7_1').play()
         }
       }
     },
@@ -73,23 +60,23 @@
           // 1 播放
         } else if (newVaule === 9) {
           // 2 播放 第一段
-          this.audioPlay('audio1')
+          document.querySelector('#audio_page7_2').play()
         } else if (newVaule === 12) {
           // 2 播放 第二段
         } else if (newVaule === 14) {
           // 3 播放
-          this.audioPlay('audio2')
+          document.querySelector('#audio_page7_3').play()
         } else if (newVaule === 20) {
           // 3 播放完毕 手移动
         } else if (newVaule === 22) {
           // 4 播放
-          this.audioPlay('audio3')
+          document.querySelector('#audio_page7_4').play()
         } else if (newVaule === 27) {
           // 5 播放
-          this.audioPlay('audio4')
+          document.querySelector('#audio_page7_5').play()
         } else if (newVaule === 31) {
           // 6 播放
-          this.audioPlay('audio5')
+          document.querySelector('#audio_page7_6').play()
           clearInterval(this.timer)
         }
       }
